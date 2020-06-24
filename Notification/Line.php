@@ -74,26 +74,22 @@ class Line extends Base implements NotificationInterface
         } else {
             $title = $this->notificationModel->getTitleWithoutAuthor($eventName, $eventData);
         }
+        
+        $message = '*['.$project['name'].']* ';
+        $message .= $title;
+        $message .= ' ('.$eventData['task']['title'].')';
 
-        $message = "";
-
-        if ($eventName != "task.create") {
-            $message = '*['.$project['name'].']* ';
-            $message .= $title;
-            $message .= ' ('.$eventData['task']['title'].')';
-
-            if ($this->configModel->get('application_url') !== '') {
-                $message .= ' - <';
-                $message .= $this->helper->url->to('TaskViewController', 'show', array('task_id' => $eventData['task']['id'], 'project_id' => $project['id']), '', true);
-                $message .= '|'.t('view the task on Kanboard').'>';
-            }
-
-            return array(
-                'text' => $message,
-                'username' => 'Kanboard',
-                'icon_url' => 'https://raw.githubusercontent.com/kanboard/kanboard/master/assets/img/favicon.png',
-            );
+        if ($this->configModel->get('application_url') !== '') {
+            $message .= ' - <';
+            $message .= $this->helper->url->to('TaskViewController', 'show', array('task_id' => $eventData['task']['id'], 'project_id' => $project['id']), '', true);
+            $message .= '|'.t('view the task on Kanboard').'>';
         }
+
+        return array(
+            'text' => $message,
+            'username' => 'Kanboard',
+            'icon_url' => 'https://raw.githubusercontent.com/kanboard/kanboard/master/assets/img/favicon.png',
+        );
     }
 
     /**
