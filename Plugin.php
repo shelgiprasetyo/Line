@@ -44,7 +44,7 @@ class Plugin extends Base
 
     public function getPluginHomepage()
     {
-        return 'https://github.com/kanboard/plugin-myplugin';
+        return 'https://github.com/shelgiprasetyo/Line.git';
     }
 }
 
