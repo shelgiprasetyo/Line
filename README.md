@@ -1,4 +1,4 @@
-Line Chat Notification
+Kanboard Line Chat Notification
 ==============================
 
 This plugin will send notification via Line Notify based on access token that you have made. This plugin will not send notifications when creating a new task.

@@ -24,7 +24,7 @@ class Plugin extends Base
 
     public function getPluginName()
     {
-        return 'Line Chat Notification';
+        return 'Kanboard Line Chat Notification';
     }
 
     public function getPluginDescription()
