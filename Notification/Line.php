@@ -24,8 +24,9 @@ class Line extends Base implements NotificationInterface
      */
     public function notifyUser(array $user, $eventName, array $eventData)
     {
+        
         $webhook = $this->userMetadataModel->get($user['id'], 'line_access_token', $this->configModel->get('line_access_token'));
-
+        
         if (! empty($webhook)) {
             if ($eventName === TaskModel::EVENT_OVERDUE) {
                 foreach ($eventData['tasks'] as $task) {
@@ -93,7 +94,7 @@ class Line extends Base implements NotificationInterface
     }
 
     /**
-     * Send message to Slack
+     * Send message to Line
      *
      * @access protected
      * @param  string    $webhook
