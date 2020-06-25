@@ -3,6 +3,23 @@ Kanboard Line Chat Notification
 
 This plugin will send notification via Line Notify based on access token that you have made.
 
+Documentation
+-------------
+
+### Generate Line Notify Access Token
+
+Generate access token in [Here](https://telegram.me/botfather)
+
+### Project Notification
+
+- Go to **Project > Configure this project > Notifications** and check Line.
+- Go to **Project > Configure this project > Integration** and fill Line Access Token form.
+
+### User Notification
+
+- Go to **My Profile > Notifications** and don't forget to choose which project will send you notification in **I want to receive notifications only for those projects:** section.
+- Go to **My Profile > Integration** and fill Line Access Token form.
+
 Author
 ------
 
@@ -25,19 +42,3 @@ You have the choice between 3 methods:
 
 Note: Plugin folder is case-sensitive.
 
-Documentation
--------------
-
-### Generate Line Notify Access Token
-
-Generate access token in [Here](https://telegram.me/botfather)
-
-### Project Notification
-
-- Go to **Project > Configure this project > Notifications** and check Line.
-- Go to **Project > Configure this project > Integration** and fill Line Access Token form.
-
-### User Notification
-
-- Go to **My Profile > Notifications** and don't forget to choose which project will send you notification in **I want to receive notifications only for those projects:** section.
-- Go to **My Profile > Integration** and fill Line Access Token form.
