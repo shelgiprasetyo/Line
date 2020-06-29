@@ -109,28 +109,38 @@ class Line extends Base implements NotificationInterface
         $message = $payload['text'];
 
         if ($message != "") {
-            $fields = array(
-                'message' => $message
-            );
-    
-            // $this->httpClient->postJsonAsync($webhook, $payload);
-            $curlUrl = 'https://notify-api.line.me/api/notify';
-    
-            $httpHeadersArray = Array();
-            $httpHeadersArray[] = 'Authorization: Bearer ' . $webhook;
-    
-            //open connection
-            $ch = curl_init();
-    
-            //set the url, number of POST vars, POST data
-            curl_setopt($ch, CURLOPT_URL, $curlUrl);
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($fields));
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $httpHeadersArray);
-    
-            //execute post
-            curl_exec($ch);
+            $this->lineNotify($webhook, $message);
         }
+    }
+    /**
+     * Curl function 
+     *
+     * @access protected
+     * @param  string    $webhook
+     * @param  string    $message
+     */
+    protected function lineNotify($webhook, $message)
+    {
+        $httpHeadersArray = Array();
+
+        $curlUrl = 'https://notify-api.line.me/api/notify';
+        $httpHeadersArray[] = 'Authorization: Bearer ' . $webhook;
+
+        $fields = array(
+            'message' => $message
+        );
+
+         //open connection
+        $ch = curl_init();
+    
+        //set the url, number of POST vars, POST data
+        curl_setopt($ch, CURLOPT_URL, $curlUrl);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($fields));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $httpHeadersArray);
+
+        //execute post
+        curl_exec($ch);
     }
 }
